@@ -87,6 +87,7 @@ public class DefaultJavaScriptExecutor implements JavaScriptExecutor {
         catch (final InterruptedException e) {
             LOG.warn("InterruptedException while waiting for the eventLoop thread to join ", e);
             // ignore, this doesn't matter, we want to stop it
+            Thread.currentThread().interrupt();
         }
         if (eventLoopThread_.isAlive()) {
             if (LOG.isWarnEnabled()) {
